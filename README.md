@@ -13,7 +13,9 @@ Feet to Squares Converter is a Chrome extension that automatically converts ment
 
 1. The extension observes the webpage for text content and dynamically loaded elements.
 2. It identifies distances in feet using a regular expression.
-3. Converts the distances into squares and meters, appending the converted values in brackets.
+3. Converts the distances into squares and meters\*, appending the converted values in brackets.
+
+- Note: The correct feet to meters conversion is `feet * 0.3048`. To simplify rounding, I've opted to multiply `feet * 0.3`, as this gives enough precision in the context of the game and historically the translations define a square as 1.5 meters.
 
 For example:
 

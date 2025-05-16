@@ -31,6 +31,12 @@ observer.observe(document.body, {
 // Also run the replacement on the initial page load
 replaceFeetWithSquares(document.body);
 
+function round(value, step) {
+	step || (step = 1.0);
+	var inv = 1.0 / step;
+	return Math.round(value * inv) / inv;
+}
+
 function replaceFeetWithSquares(node) {
 	// Only process text nodes that are not in script or style elements
 	if (
@@ -54,7 +60,7 @@ function replaceFeetWithSquares(node) {
 		while ((match = regex.exec(originalText)) !== null) {
 			const feet = parseInt(match[1], 10);
 			const squares = Math.floor(feet / 5);
-			const meters = Math.floor(feet * 0.3048);
+			const meters = feet * 0.3;
 			const replacement = `${match[0]} [${squares}sq | ${meters}m]`;
 
 			// Append text before the match and the replacement
