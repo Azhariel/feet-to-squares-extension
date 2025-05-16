@@ -46,8 +46,9 @@ function replaceFeetWithSquares(node) {
 		// (feet|pés|ft\.|foot) - matches "feet", "pés", "ft." or "foot" (case insensitive)
 		// The 'gi' flags mean global (find all matches) and case insensitive.
 
-		const regex = /(\d+)\s*(feet|pés|ft\.|-foot)/gi;
-		let newText = originalText;
+		const regex = /(\d+)\s*(feet|pés|ft\.|-foot)(?!\s*\[\d+\s*sq\s*\|\s*\d+m\])/gi;
+		let newText = '';
+		let lastIndex = 0;
 		let match;
 
 		while ((match = regex.exec(originalText)) !== null) {
@@ -55,8 +56,14 @@ function replaceFeetWithSquares(node) {
 			const squares = Math.floor(feet / 5);
 			const meters = Math.floor(feet * 0.3048);
 			const replacement = `${match[0]} [${squares}sq | ${meters}m]`;
-			newText = newText.replace(match[0], replacement);
+
+			// Append text before the match and the replacement
+			newText += originalText.slice(lastIndex, match.index) + replacement;
+			lastIndex = match.index + match[0].length;
 		}
+
+		// Append remaining text after the last match
+		newText += originalText.slice(lastIndex);
 
 		// If the text has changed, update the node's value
 		if (newText !== originalText) {
