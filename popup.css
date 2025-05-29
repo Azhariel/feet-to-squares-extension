@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+	width: 320px;
+	font-family: 'Press Start 2P', 'Inter', monospace, sans-serif;
+	background: linear-gradient(135deg, #23272e 0%, #3b2f2f 100%);
+	color: #f3e9d2;
+	margin: 0;
+	padding: 0;
+	border-radius: 1rem;
+	border: 4px solid #bfa76f;
+	box-shadow: 0 8px 32px 0 rgba(60, 40, 10, 0.45), 0 0 0 8px #6e4b1b inset;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	border-radius: 0.75rem;
+	background: rgba(60, 40, 10, 0.25);
+	border: 2px solid #bfa76f;
+	box-shadow: 0 2px 8px 0 #2d1a05;
+}
+
+.title {
+	font-size: 1.1rem;
+	font-family: 'Press Start 2P', monospace;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: 2px;
+	color: #ffe066;
+	text-shadow: 2px 2px 0 #6e4b1b, 0 0 8px #bfa76f;
+	border-bottom: 2px dashed #bfa76f;
+}
+
+input,
+button,
+select,
+textarea {
+	font-family: 'Press Start 2P', monospace;
+	background: #23272e;
+	color: #ffe066;
+	border: 2px solid #bfa76f;
+	border-radius: 0.25rem;
+	padding: 0.5rem 0.5rem;
+	box-sizing: border-box;
+	box-shadow: 1px 1px 0 #6e4b1b;
+	outline: none;
+	transition: border-color 0.2s, box-shadow 0.2s;
+	font-size: 0.9rem;
+	width: 100%;
+	max-width: 100%;
+	margin-top: 0.5rem;
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+	border-color: #ffe066;
+	box-shadow: 0 0 0 1.5px #ffe066;
+}
+
+button {
+	cursor: pointer;
+	background: linear-gradient(90deg, #bfa76f 0%, #ffe066 100%);
+	color: #23272e;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #ffe066;
+	border-radius: 0.25rem;
+	margin-top: 0.5rem;
+}
+
+button:hover {
+	background: linear-gradient(90deg, #ffe066 0%, #bfa76f 100%);
+	color: #6e4b1b;
+}
+
+.footer {
+	text-align: center;
+	font-size: 0.55rem;
+	color: #bfa76f;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-family: 'Press Start 2P', monospace;
+	text-shadow: 1px 1px 0 #6e4b1b;
+}
+
+.footer a {
+	color: #a3d8f4;
+	text-decoration: underline dotted;
+	transition: color 0.2s;
+	font-family: inherit;
+}
+.footer a:hover {
+	color: #ffe066;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	background: #3b2f2f;
+}
+::-webkit-scrollbar-thumb {
+	background: #bfa76f;
+	border-radius: 4px;
+}

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Feet to Squares Converter",
-	"version": "1.0",
+	"version": "1.1.0",
 	"description": "Converts mentions of 'feet' to equivalent 'squares' (5 feet per square).",
 	"permissions": ["activeTab"],
 	"content_scripts": [
@@ -14,6 +14,7 @@
 		"default_icon": {
 			"16": "icons/icon16.png"
 		},
-		"default_title": "Click to convert"
+		"default_title": "Feet to Squares Converter",
+		"default_popup": "popup.html"
 	}
 }
