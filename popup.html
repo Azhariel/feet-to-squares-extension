@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Tools</title>
+    <style>
+        /* Custom styles for the popup */
+        body {
+            width: 300px;
+            /* Fixed width for the popup */
+            min-height: 250px;
+            /* Adjusted minimum height for the slider */
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Light background */
+            color: #334155;
+            /* Darker text */
+            margin: 0;
+            /* Remove default body margin */
+            padding: 0;
+            /* Remove default body padding */
+            border-radius: 0.5rem;
+            background-color: bisque;
+        }
+
+        .container {
+            display: flex;
+
+            flex-direction: column;
+            gap: 1rem;
+            /* Equivalent to space-y-4 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            /* text-xl */
+            font-weight: 600;
+            /* font-semibold */
+            text-align: center;
+            margin-bottom: 0.5rem;
+            /* mb-2 */
+        }
+
+        .btn {
+            background-color: #2563eb;
+            /* bg-blue-600 */
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            /* py-2 px-4 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            /* shadow-md */
+            transition: background-color 0.3s ease-in-out;
+            border: none;
+            /* Remove default button border */
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+            /* hover:bg-blue-700 */
+        }
+
+        .output-box {
+            background-color: #f3f4f6;
+            /* bg-gray-100 */
+            padding: 0.75rem;
+            /* p-3 */
+            margin-top: 1rem;
+            /* mt-4 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            border: 1px solid #e5e7eb;
+            /* border border-gray-200 */
+            font-size: 0.875rem;
+            /* text-sm */
+            word-break: break-words;
+            /* break-words */
+            min-height: 50px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+            /* mt-4 */
+            margin-bottom: 0.5rem;
+            /* mb-2 */
+        }
+
+        .slider-label {
+            font-size: 0.875rem;
+            /* text-sm */
+            font-weight: 500;
+            /* font-medium */
+            color: #4b5563;
+            /* text-gray-700 */
+            margin-bottom: 0.5rem;
+            /* mb-2 */
+        }
+
+        .level-display {
+            font-size: 1.125rem;
+            /* text-lg */
+            font-weight: bold;
+            color: #2563eb;
+            /* text-blue-600 */
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 0.5rem;
+            /* h-2 */
+            background-color: #e5e7eb;
+            /* bg-gray-200 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            appearance: none;
+            -webkit-appearance: none;
+            /* appearance-none for webkit browsers */
+            cursor: pointer;
+            outline: none;
+            /* Remove outline on focus */
+        }
+
+        /* Style for the thumb of the slider */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 1rem;
+            /* Adjust thumb size */
+            height: 1rem;
+            /* Adjust thumb size */
+            border-radius: 50%;
+            background: #2563eb;
+            /* Match button color */
+            cursor: grab;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+            /* Subtle glow */
+            margin-top: -0.25rem;
+            /* Center thumb vertically */
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: grab;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+        }
+
+        input[type="range"]::-ms-thumb {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: grab;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible-section {
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            /* Ensures content doesn't spill out when collapsed */
+            margin-bottom: 1rem;
+            /* Space between sections */
+        }
+
+        .collapsible-header {
+            background-color: #e0e7ff;
+            /* Light blue background */
+            color: #1e3a8a;
+            /* Darker blue text */
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .collapsible-header:hover {
+            background-color: #c7d2fe;
+            /* Lighter blue on hover */
+        }
+
+        .collapsible-content {
+            padding: 1rem;
+            display: none;
+            /* Hidden by default */
+            background-color: #ffffff;
+        }
+
+        .collapsible-content.active {
+            display: block;
+            /* Show when active */
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .arrow.rotated {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">RPG Tools</h1>
+
+        <div class="collapsible-section">
+            <div class="collapsible-header" data-target="npcContent">
+                <span>NPC Name Generator</span>
+                <span class="arrow">&#9658;</span>
+            </div>
+            <div id="npcContent" class="collapsible-content">
+                <button id="generateNpcNameBtn" class="btn w-full">Generate NPC Name</button>
+                <div id="npcNameOutput" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="collapsible-section">
+            <div class="collapsible-header" data-target="lootContent">
+                <span>Random Loot Roller</span>
+                <span class="arrow">&#9658;</span>
+            </div>
+            <div id="lootContent" class="collapsible-content">
+                <div class="slider-container">
+                    <label for="levelSlider" class="slider-label">Loot Level: <span id="currentLevel"
+                            class="level-display">1</span></label>
+                    <input type="range" id="levelSlider" min="1" max="20" value="1">
+                </div>
+                <button id="rollLootBtn" class="btn w-full">Roll Random Loot</button>
+                <div id="lootOutput" class="output-box"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

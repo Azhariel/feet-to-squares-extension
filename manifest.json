@@ -11,9 +11,10 @@
 		}
 	],
 	"action": {
+		"default_popup": "popup.html",
 		"default_icon": {
 			"16": "icons/icon16.png"
 		},
-		"default_title": "Click to convert"
+		"default_title": "RPG Tools"
 	}
 }
