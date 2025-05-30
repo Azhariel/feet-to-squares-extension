@@ -7,7 +7,8 @@ Feet to Squares Converter is a Chrome extension that automatically converts ment
 - Automatically detects and converts distances in feet, such as "10 feet" or "15 ft.", into:
   - Squares (5 feet per square)
   - Meters (rounded to the nearest whole number)
-- Should work anywhere but you can also limit its access to specific URLs.
+- Works automatically on any page, but you can also limit its access to specific URLs.
+- **Popup tool:** Enter a value in feet and instantly see the conversion to squares and meters.
 
 ## How It Works
 
@@ -15,7 +16,7 @@ Feet to Squares Converter is a Chrome extension that automatically converts ment
 2. It identifies distances in feet using a regular expression.
 3. Converts the distances into squares and meters\*, appending the converted values in brackets.
 
-- Note: The correct feet to meters conversion is `feet * 0.3048`. To simplify rounding, I've opted to multiply `feet * 0.3`, as this gives enough precision in the context of the game and historically the translations define a square as 1.5 meters.
+- Note: The correct feet to meters conversion is `feet * 0.3048`. To simplify rounding, the extension uses `feet * 0.3`, which is sufficiently accurate for tabletop gaming and matches the convention of 1 square = 1.5 meters.
 
 For example:
 
@@ -32,10 +33,10 @@ For example:
 
 ## Usage
 
-1. Navigate to any webpage.
-2. It should work automatically, but in case it doesn't:
-   2.1. Click the extension icon in the toolbar to activate the script.
-   2.2. The extension will convert distances in feet to squares and meters.
+- The extension works automatically on any webpage.
+- To use the popup tool:
+  1. Click the extension icon in the Chrome toolbar.
+  2. Enter a value in feet to see the conversion to squares and meters instantly.
 
 ## Permissions
 
@@ -49,6 +50,7 @@ This extension requires the following permissions:
 - `manifest.json`: Defines the extension's metadata and permissions.
 - `force.js`: Handles the browser action click event to inject the content script.
 - `content.js`: Contains the logic for detecting and converting distances.
+- `popup.html`, `popup.css`, `popup.js`: Implements the popup conversion tool.
 - `icons/`: Contains the extension's icon.
 
 ## License
